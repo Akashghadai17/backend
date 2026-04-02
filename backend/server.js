@@ -274,11 +274,7 @@ app.delete('/api/admin/users/:id', adminAuth, async (req, res) => {
   res.json({ message: 'User deleted successfully' });
 });
 
-app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'client', 'dist', 'index.html'));
-});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
