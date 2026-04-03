@@ -47,11 +47,20 @@ export default function Login() {
         signal: controller.signal
       })
       const data = await res.json()
-      if (!res.ok) return setMsg({ text: data.message, type: 'error' })
-      localStorage.setItem('token', data.token)
-      localStorage.setItem('user', JSON.stringify(data.user))
-      navigate('/')
-    } catch { setMsg({ text: 'Server error. Please try again.', type: 'error' }) }
+
+      if (!res.ok) {
+        return setMsg({ text: data.message, type: 'error' })
+      }
+
+// ✅ Registration success (no token yet)
+      setMsg({ text: "Account created successfully! Please login.", type: 'success' })
+
+// switch to login tab
+      setIsLogin(true)
+
+// clear form
+      setForm({ name: "", email: "", password: "" })
+      } catch { setMsg({ text: 'Server error. Please try again.', type: 'error' }) }
   }
 
   return (
