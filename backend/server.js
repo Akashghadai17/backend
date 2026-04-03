@@ -36,6 +36,8 @@ const userSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
+app.get('/api/test', (req, res) => res.json({ msg: 'Backend is working!' }))
+
 const orderSchema = new mongoose.Schema({
   userId: mongoose.Schema.Types.ObjectId,
   fileName: String,
